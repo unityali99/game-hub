@@ -1,5 +1,8 @@
 {
   "name": "game-hub",
+  "author": {
+    "name": "Ali Ahmadi"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
