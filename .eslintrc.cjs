@@ -18,8 +18,6 @@ module.exports = {
   },
   plugins: ["react-refresh"],
   rules: {
-    semi: "off",
-    "@typescript-eslint/semi": "error",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
