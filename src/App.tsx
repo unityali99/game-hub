@@ -3,7 +3,6 @@ import NavBar from "./sections/NavBar";
 import GameGrid from "./sections/GameGrid";
 
 function App() {
-  console.log(import.meta.env.VITE_API_KEY);
   return (
     <Grid
       templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
