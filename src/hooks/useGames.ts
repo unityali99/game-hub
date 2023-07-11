@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import httpService from "../services/httpService";
 import { AxiosError, CanceledError } from "axios";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchResult {
