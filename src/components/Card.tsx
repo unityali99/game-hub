@@ -1,6 +1,7 @@
 import { Game } from "../hooks/useGames";
 import {
   CardBody,
+  CardFooter,
   Card as ChakraCard,
   HStack,
   Heading,
@@ -16,17 +17,23 @@ interface Props {
 
 export default function Card({ game }: Props) {
   return (
-    <ChakraCard border={10} overflow={"hidden"}>
+    <ChakraCard
+      boxShadow={"0 0 7px rgba(0,0,0,0.6)"}
+      border={10}
+      overflow={"hidden"}
+    >
       <Image w={"100%"} src={cropImageUrl(game.background_image)} />
       <CardBody>
-        <Heading>{game.name}</Heading>
+        <Heading fontSize={30}>{game.name}</Heading>
+      </CardBody>
+      <CardFooter mt={-4}>
         <HStack justifyContent="space-between">
           <PlatformList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <ScoreBadge score={game.metacritic} />
         </HStack>
-      </CardBody>
+      </CardFooter>
     </ChakraCard>
   );
 }
