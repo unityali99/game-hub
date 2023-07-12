@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import PlatformList from "./PlatformList";
 import ScoreBadge from "./ScoreBadge";
+import cropImageUrl from "../utils/cropImageUrl";
 
 interface Props {
   game: Game;
@@ -16,7 +17,7 @@ interface Props {
 export default function Card({ game }: Props) {
   return (
     <ChakraCard border={10} overflow={"hidden"}>
-      <Image w={"100%"} src={game.background_image} />
+      <Image w={"100%"} src={cropImageUrl(game.background_image)} />
       <CardBody>
         <Heading>{game.name}</Heading>
         <HStack justifyContent="space-between">
