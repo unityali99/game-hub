@@ -1,12 +1,13 @@
-import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
+import { CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
+import CardLayout from "./CardLayout";
 
 export default function CardPlaceholder() {
   return (
-    <Card w={{ lg: "30vw" }} border={10} overflow={"hidden"}>
+    <CardLayout>
       <Skeleton h={"300px"} />
       <CardBody>
         <SkeletonText />
       </CardBody>
-    </Card>
+    </CardLayout>
   );
 }

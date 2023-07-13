@@ -1,15 +1,9 @@
 import { Game } from "../hooks/useGames";
-import {
-  CardBody,
-  CardFooter,
-  Card as ChakraCard,
-  HStack,
-  Heading,
-  Image,
-} from "@chakra-ui/react";
+import { CardBody, CardFooter, HStack, Heading, Image } from "@chakra-ui/react";
 import PlatformList from "./PlatformList";
 import ScoreBadge from "./ScoreBadge";
 import cropImageUrl from "../utils/cropImageUrl";
+import CardLayout from "./CardLayout";
 
 interface Props {
   game: Game;
@@ -17,11 +11,7 @@ interface Props {
 
 export default function Card({ game }: Props) {
   return (
-    <ChakraCard
-      boxShadow={"0 0 7px rgba(0,0,0,0.6)"}
-      border={10}
-      overflow={"hidden"}
-    >
+    <CardLayout>
       <Image w={"100%"} src={cropImageUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize={30}>{game.name}</Heading>
@@ -34,6 +24,6 @@ export default function Card({ game }: Props) {
           <ScoreBadge score={game.metacritic} />
         </HStack>
       </CardFooter>
-    </ChakraCard>
+    </CardLayout>
   );
 }
