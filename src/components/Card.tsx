@@ -17,7 +17,7 @@ export default function Card({ game }: Props) {
         <Heading fontSize={30}>{game.name}</Heading>
       </CardBody>
       <CardFooter mt={-4}>
-        <HStack justifyContent="space-between">
+        <HStack w={"100%"} justifyContent="space-between">
           <PlatformList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />

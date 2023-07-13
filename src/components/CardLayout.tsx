@@ -8,7 +8,7 @@ interface Props {
 export default function CardLayout({ children }: Props) {
   return (
     <Card
-      w={{ lg: "30vw" }}
+      w={{ lg: "26.5vw" }}
       boxShadow={"0 0 7px rgba(0,0,0,0.6)"}
       border={10}
       overflow={"hidden"}
