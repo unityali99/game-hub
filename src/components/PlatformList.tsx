@@ -30,9 +30,10 @@ export default function PlatformList({ platforms }: Props) {
     web: BsGlobe,
   };
   return (
-    <HStack margin={2}>
+    <HStack margin={3}>
       {platforms.map((platform) => (
         <Icon
+          fontSize={20}
           key={platform.id}
           color={"gray.500"}
           as={iconMap[platform.slug]}
