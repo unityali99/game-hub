@@ -1,9 +1,13 @@
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import cropImageUrl from "../utils/cropImageUrl";
 
 export default function GenreList() {
-  const { data } = useGenres();
+  const { data, error, isLoading } = useGenres();
+
+  if (error) return null;
+  if (isLoading)
+    return <Spinner position={"absolute"} top={"50%"} size={"xl"} mx={"16"} />;
   return (
     <List>
       {data.map((genre) => {
@@ -16,7 +20,7 @@ export default function GenreList() {
                 w={"40%"}
                 src={cropImageUrl(genre.image_background)}
               />
-              <Text fontSize={15} mx={1}>
+              <Text fontWeight={"semibold"} fontSize={15} mx={1}>
                 {genre.name}
               </Text>
             </HStack>
