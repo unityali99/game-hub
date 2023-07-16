@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { HStack, Icon } from "@chakra-ui/react";
-import { Platform } from "../hooks/useGames";
+import { Platform } from "../hooks/usePlatforms";
 import {
   FaAndroid,
   FaApple,
@@ -30,7 +30,7 @@ export default function PlatformList({ platforms }: Props) {
     web: BsGlobe,
   };
   return (
-    <HStack margin={3}>
+    <HStack>
       {platforms.map((platform) => (
         <Icon
           fontSize={20}
