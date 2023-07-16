@@ -27,7 +27,7 @@ export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
     <List>
       {data.map((genre, index) => {
         return (
-          <ListItem key={genre.id}>
+          <ListItem key={genre.id} onClick={() => onSelectGenre(genre)}>
             {index !== 0 && <Divider />}
             <Button
               bgColor={
@@ -63,7 +63,6 @@ export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
                   whiteSpace={"normal"}
                   fontWeight={"semibold"}
                   fontSize={15}
-                  onClick={() => onSelectGenre(genre)}
                 >
                   {genre.name}
                 </Text>
