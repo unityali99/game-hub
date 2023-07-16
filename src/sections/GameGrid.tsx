@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { Alert, SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import Card from "../components/Card";
 import CardPlaceholder from "../components/CardPlaceholder";
@@ -14,7 +14,19 @@ export default function GameGrid({ selectedGenre }: Props) {
 
   return (
     <>
-      {error && <Text>{error}</Text>}
+      {error && (
+        <Alert
+          rounded={5}
+          my={10}
+          justifyContent={"center"}
+          w={"20%"}
+          mx={"auto"}
+          textAlign={"center"}
+          colorScheme="red"
+        >
+          <Text color="red.200">{error}</Text>
+        </Alert>
+      )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} padding={5}>
         {isLoading && arr.map((n) => <CardPlaceholder key={n} />)}
         {data.map((game) => (
