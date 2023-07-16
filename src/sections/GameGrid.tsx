@@ -3,14 +3,16 @@ import useGames from "../hooks/useGames";
 import Card from "../components/Card";
 import CardPlaceholder from "../components/CardPlaceholder";
 import { Genre } from "../hooks/useGenres";
+import { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-export default function GameGrid({ selectedGenre }: Props) {
-  const { data, error, isLoading } = useGames(selectedGenre);
-  const arr = [1, 2, 3, 4, 5, 6];
+export default function GameGrid({ selectedGenre, selectedPlatform }: Props) {
+  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+  const arr = Array.from({ length: 12 }, (_, index) => index + 1);
 
   return (
     <>
@@ -28,10 +30,9 @@ export default function GameGrid({ selectedGenre }: Props) {
         </Alert>
       )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} padding={5}>
-        {isLoading && arr.map((n) => <CardPlaceholder key={n} />)}
-        {data.map((game) => (
-          <Card key={game.id} game={game} />
-        ))}
+        {isLoading
+          ? arr.map((n) => <CardPlaceholder key={n} />)
+          : data.map((game) => <Card key={game.id} game={game} />)}
       </SimpleGrid>
     </>
   );
