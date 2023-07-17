@@ -1,5 +1,4 @@
 import {
-  Alert,
   HStack,
   Icon,
   Menu,
@@ -12,33 +11,36 @@ import {
   menuButtonStyle,
 } from "../utils/MenuButtonStyles";
 
-export default function SortMenu() {
+interface Props {
+  sortOrder: string | null;
+  setSortOrder: (sortValue: string) => void;
+}
+
+export default function SortMenu({ sortOrder, setSortOrder }: Props) {
+  const sortData = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date Added" },
+    { value: "name", label: "name" },
+    { value: "-released", label: "Released Date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average Rating" },
+  ];
+  const selectedSort = sortData.find((sort) => sort.value === sortOrder);
+
   return (
     <Menu>
       <HStack alignItems={"center"}>
         <MenuButton {...menuButtonStyle}>
-          Sort By A-Z
+          Sort By {sortOrder ? selectedSort?.label : "Relevance"}
           <Icon {...menuButtonIconStyle} />
         </MenuButton>
       </HStack>
       <MenuList>
-        {/* {error && (
-          <Alert
-            w={"75%"}
-            mx={"auto"}
-            justifyContent={"center"}
-            rounded={10}
-            colorScheme="red"
-          >
-            {error}
-          </Alert>
-        )} */}
-        <MenuItem>Revelance</MenuItem>
-        <MenuItem>Date Added</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Release Date</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Average Rating</MenuItem>
+        {sortData.map(({ value, label }) => (
+          <MenuItem onClick={() => setSortOrder(value)} key={value}>
+            {label}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
