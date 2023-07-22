@@ -1,4 +1,4 @@
-import { Hide, Grid, GridItem, HStack } from "@chakra-ui/react";
+import { Hide, Grid, GridItem, HStack, Box } from "@chakra-ui/react";
 import NavBar from "./sections/NavBar";
 import GameGrid from "./sections/GameGrid";
 import GenreList from "./components/GenreList";
@@ -7,6 +7,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatformMenu from "./components/PlatformMenu";
 import { Platform } from "./hooks/usePlatforms";
 import SortMenu from "./components/SortMenu";
+import Title from "./components/Title";
 
 export interface GameQuery {
   genre?: Genre;
@@ -41,6 +42,9 @@ function App() {
         </GridItem>
       </Hide>
       <GridItem area={"main"}>
+        <Box textAlign={{ base: "center", lg: "start" }} mx={{ lg: 20 }} my={7}>
+          <Title gameQuery={gameQuery} />
+        </Box>
         <HStack
           justifyContent={{ base: "center", lg: "flex-start" }}
           mx={{ base: "5", md: "20" }}
