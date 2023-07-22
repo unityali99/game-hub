@@ -29,7 +29,7 @@ export default function SortMenu({ sortOrder, setSortOrder }: Props) {
 
   return (
     <Menu>
-      <HStack alignItems={"center"}>
+      <HStack alignItems={"center"} whiteSpace={"nowrap"}>
         <MenuButton {...menuButtonStyle}>
           Sort By {sortOrder ? selectedSort?.label : "Relevance"}
           <Icon {...menuButtonIconStyle} />

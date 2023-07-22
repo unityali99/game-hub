@@ -36,7 +36,12 @@ function App() {
         </GridItem>
       </Hide>
       <GridItem area={"main"}>
-        <HStack mx={20} my={2} spacing={5}>
+        <HStack
+          justifyContent={{ base: "center", lg: "flex-start" }}
+          mx={{ base: "5", md: "20" }}
+          my={2}
+          spacing={5}
+        >
           <PlatformMenu
             selectedPlatform={gameQuery.platform}
             onSelectPlatform={(platform: Platform) =>

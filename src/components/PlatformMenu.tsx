@@ -27,7 +27,7 @@ export default function PlatformMenu({
 
   return (
     <Menu>
-      <HStack alignItems={"center"}>
+      <HStack alignItems={"center"} whiteSpace={"nowrap"}>
         <MenuButton {...menuButtonStyle}>
           {selectedPlatform ? selectedPlatform.name : "Platform"}
           <Icon {...menuButtonIconStyle} />
