@@ -9,9 +9,10 @@ import { Platform } from "./hooks/usePlatforms";
 import SortMenu from "./components/SortMenu";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string | null;
+  genre?: Genre;
+  platform?: Platform;
+  sortOrder?: string;
+  searchText?: string;
 }
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
     >
       <GridItem area={"nav"}>
-        <NavBar />
+        <NavBar
+          onSearch={(searchText?: string) =>
+            setGameQuery((prev) => ({ ...prev, searchText }))
+          }
+        />
       </GridItem>
       <Hide below="lg">
         <GridItem area={"aside"} p={1.5}>

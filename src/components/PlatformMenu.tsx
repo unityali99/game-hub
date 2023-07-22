@@ -15,7 +15,7 @@ import {
 } from "../utils/MenuButtonStyles";
 
 interface Props {
-  selectedPlatform: Platform | null;
+  selectedPlatform?: Platform;
   onSelectPlatform: (platform: Platform) => void;
 }
 

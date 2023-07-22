@@ -14,7 +14,7 @@ import cropImageUrl from "../utils/cropImageUrl";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre?: Genre;
 }
 
 export default function GenreList({ selectedGenre, onSelectGenre }: Props) {

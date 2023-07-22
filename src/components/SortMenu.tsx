@@ -12,7 +12,7 @@ import {
 } from "../utils/MenuButtonStyles";
 
 interface Props {
-  sortOrder: string | null;
+  sortOrder?: string;
   setSortOrder: (sortValue: string) => void;
 }
 
