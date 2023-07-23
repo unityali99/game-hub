@@ -1,7 +1,7 @@
-import { Hide, Grid, GridItem, HStack, Box } from "@chakra-ui/react";
+import { Hide, Grid, GridItem, HStack, Box, Heading } from "@chakra-ui/react";
 import NavBar from "./sections/NavBar";
 import GameGrid from "./sections/GameGrid";
-import GenreList from "./components/GenreList";
+import GenreList from "./sections/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformMenu from "./components/PlatformMenu";
@@ -33,6 +33,9 @@ function App() {
       </GridItem>
       <Hide below="lg">
         <GridItem area={"aside"} p={1.5}>
+          <Heading m={7} fontSize={30} fontWeight={"semibold"}>
+            Genres
+          </Heading>
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre: Genre) =>

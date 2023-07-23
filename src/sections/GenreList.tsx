@@ -22,7 +22,7 @@ export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
 
   if (error) return null;
   if (isLoading)
-    return <Spinner position={"absolute"} top={"50%"} size={"xl"} mx={"16"} />;
+    return <Spinner position={"absolute"} top={"30%"} size={"xl"} mx={"16"} />;
   return (
     <List>
       {data.map((genre, index) => {
