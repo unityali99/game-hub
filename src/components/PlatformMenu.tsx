@@ -42,13 +42,13 @@ export default function PlatformMenu({
             rounded={10}
             colorScheme="red"
           >
-            {error}
+            {error.message}
           </Alert>
         )}
         {isLoading ? (
           <Spinner display={"block"} mx={"auto"} my={2} />
         ) : (
-          data.map((platform) => (
+          data?.results.map((platform) => (
             <MenuItem
               key={platform.id}
               onClick={() => onSelectPlatform(platform)}

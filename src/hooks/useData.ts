@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import httpService from "../services/httpService";
 import { AxiosError, AxiosRequestConfig, CanceledError } from "axios";
 
-interface FetchResult<T> {
+export interface FetchResult<T> {
   count: number;
   results: T[];
 }

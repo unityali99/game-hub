@@ -20,12 +20,12 @@ interface Props {
 export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
   const { data, error, isLoading } = useGenres();
 
-  if (error) return null;
+  if (error) return;
   if (isLoading)
     return <Spinner position={"absolute"} top={"30%"} size={"xl"} mx={"16"} />;
   return (
     <List>
-      {data.map((genre, index) => {
+      {data.results.map((genre, index) => {
         return (
           <ListItem key={genre.id} onClick={() => onSelectGenre(genre)}>
             {index !== 0 && <Divider />}
