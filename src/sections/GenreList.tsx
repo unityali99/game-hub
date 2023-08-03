@@ -20,7 +20,7 @@ interface Props {
 export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
   const { data, error, isLoading } = useGenres();
 
-  if (error) return;
+  if (error) return null;
   if (isLoading)
     return <Spinner position={"absolute"} top={"30%"} size={"xl"} mx={"16"} />;
   return (
