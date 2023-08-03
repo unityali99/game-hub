@@ -24,13 +24,13 @@ export default function GameGrid({ gameQuery }: Props) {
           textAlign={"center"}
           colorScheme="red"
         >
-          <Text color="red.200">{error}</Text>
+          <Text color="red.200">{error.message}</Text>
         </Alert>
       )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} padding={5}>
         {isLoading
           ? arr.map((n) => <CardPlaceholder key={n} />)
-          : data.map((game) => <Card key={game.id} game={game} />)}
+          : data?.results.map((game) => <Card key={game.id} game={game} />)}
       </SimpleGrid>
     </>
   );

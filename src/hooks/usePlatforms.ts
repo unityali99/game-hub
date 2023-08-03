@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import httpService from "../services/httpService";
-import { FetchResult } from "./useData";
+import httpService, { FetchResult } from "../services/httpService";
 
 export interface Platform {
   id: number;
@@ -8,8 +7,8 @@ export interface Platform {
   slug: string;
 }
 
-const usePlatforms = () => {
-  return useQuery<FetchResult<Platform>, Error>({
+const usePlatforms = () =>
+  useQuery<FetchResult<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: () =>
       httpService
@@ -17,6 +16,5 @@ const usePlatforms = () => {
         .then((res) => res.data),
     staleTime: 100_000,
   });
-};
 
 export default usePlatforms;
