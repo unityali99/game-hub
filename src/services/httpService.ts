@@ -2,6 +2,7 @@ import axios from "axios";
 
 export interface FetchResult<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
