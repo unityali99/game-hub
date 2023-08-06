@@ -9,15 +9,15 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import cropImageUrl from "../utils/cropImageUrl";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre?: Genre;
+  onSelectGenreId: (genreId: number) => void;
+  selectedGenreId?: number;
 }
 
-export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
+export default function GenreList({ selectedGenreId, onSelectGenreId }: Props) {
   const { data, error, isLoading } = useGenres();
 
   if (error) return null;
@@ -27,11 +27,11 @@ export default function GenreList({ selectedGenre, onSelectGenre }: Props) {
     <List>
       {data.results.map((genre, index) => {
         return (
-          <ListItem key={genre.id} onClick={() => onSelectGenre(genre)}>
+          <ListItem key={genre.id} onClick={() => onSelectGenreId(genre.id)}>
             {index !== 0 && <Divider />}
             <Button
               bgColor={
-                genre.id === selectedGenre?.id ? "rgba(128,128,128,0.2)" : ""
+                genre.id === selectedGenreId ? "rgba(128,128,128,0.2)" : ""
               }
               variant={"ghost"}
               width={"100%"}
