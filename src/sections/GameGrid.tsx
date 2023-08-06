@@ -4,18 +4,23 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { GameQuery } from "../App";
 import Card from "../components/Card";
 import CardPlaceholder from "../components/CardPlaceholder";
-import useGames from "../hooks/useGames";
+import useGames from "../hooks/list/useGames";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
 export default function GameGrid({ gameQuery }: Props) {
-  const { data, error, isLoading, fetchNextPage, hasNextPage } =
-    useGames(gameQuery);
+  const {
+    data: games,
+    error,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+  } = useGames(gameQuery);
   const arr = Array.from({ length: 12 }, (_, index) => index + 1);
   const fetchedGamesLength =
-    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+    games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
   return (
     <>
@@ -47,7 +52,7 @@ export default function GameGrid({ gameQuery }: Props) {
         >
           {isLoading
             ? arr.map((n) => <CardPlaceholder key={n} />)
-            : data?.pages.map((fetchResult, index) => (
+            : games?.pages.map((fetchResult, index) => (
                 <Fragment key={index}>
                   {fetchResult.results.map((game) => (
                     <Card key={game.id} game={game} />

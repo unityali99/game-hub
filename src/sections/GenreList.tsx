@@ -9,7 +9,7 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import useGenres from "../hooks/list/useGenres";
 import cropImageUrl from "../utils/cropImageUrl";
 
 interface Props {

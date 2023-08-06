@@ -8,11 +8,12 @@ import {
   MenuList,
   Spinner,
 } from "@chakra-ui/react";
-import usePlatforms from "../hooks/usePlatforms";
 import {
   menuButtonIconStyle,
   menuButtonStyle,
 } from "../utils/MenuButtonStyles";
+import usePlatform from "../hooks/single/usePlatform";
+import usePlatforms from "../hooks/list/usePlatforms";
 
 interface Props {
   selectedPlatformId?: number;
@@ -24,15 +25,13 @@ export default function PlatformMenu({
   selectedPlatformId,
 }: Props) {
   const { data: platforms, isLoading, error } = usePlatforms();
-  const currentPlatform = platforms?.results.find(
-    (platform) => platform.id === selectedPlatformId
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   return (
     <Menu>
       <HStack alignItems={"center"} whiteSpace={"nowrap"}>
         <MenuButton {...menuButtonStyle}>
-          {currentPlatform ? currentPlatform.name : "Platform"}
+          {selectedPlatform ? selectedPlatform.name : "Platform"}
           <Icon {...menuButtonIconStyle} />
         </MenuButton>
       </HStack>
