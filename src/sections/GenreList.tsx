@@ -11,28 +11,24 @@ import {
 } from "@chakra-ui/react";
 import useGenres from "../hooks/list/useGenres";
 import cropImageUrl from "../utils/cropImageUrl";
+import useGameQueryStore from "../utils/gameQueryStore";
 
-interface Props {
-  onSelectGenreId: (genreId: number) => void;
-  selectedGenreId?: number;
-}
-
-export default function GenreList({ selectedGenreId, onSelectGenreId }: Props) {
-  const { data, error, isLoading } = useGenres();
+export default function GenreList() {
+  const { data: genres, error, isLoading } = useGenres();
+  const genreId = useGameQueryStore((state) => state.gameQuery.genreId);
+  const { setGenreId } = useGameQueryStore();
 
   if (error) return null;
   if (isLoading)
     return <Spinner position={"absolute"} top={"30%"} size={"xl"} mx={"16"} />;
   return (
     <List>
-      {data.results.map((genre, index) => {
+      {genres.results.map((genre, index) => {
         return (
-          <ListItem key={genre.id} onClick={() => onSelectGenreId(genre.id)}>
+          <ListItem key={genre.id} onClick={() => setGenreId(genre.id)}>
             {index !== 0 && <Divider />}
             <Button
-              bgColor={
-                genre.id === selectedGenreId ? "rgba(128,128,128,0.2)" : ""
-              }
+              bgColor={genre.id === genreId ? "rgba(128,128,128,0.2)" : ""}
               variant={"ghost"}
               width={"100%"}
               height={"100%"}

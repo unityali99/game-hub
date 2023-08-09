@@ -1,16 +1,13 @@
 import { Alert, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { Fragment } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { GameQuery } from "../App";
 import Card from "../components/Card";
 import CardPlaceholder from "../components/CardPlaceholder";
 import useGames from "../hooks/list/useGames";
+import useGameQueryStore from "../utils/gameQueryStore";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-export default function GameGrid({ gameQuery }: Props) {
+export default function GameGrid() {
+  const gameQuery = useGameQueryStore((state) => state.gameQuery);
   const {
     data: games,
     error,

@@ -12,26 +12,21 @@ import {
   menuButtonIconStyle,
   menuButtonStyle,
 } from "../utils/MenuButtonStyles";
-import usePlatform from "../hooks/single/usePlatform";
 import usePlatforms from "../hooks/list/usePlatforms";
+import useGameQueryStore from "../utils/gameQueryStore";
+import usePlatform from "../hooks/single/usePlatform";
 
-interface Props {
-  selectedPlatformId?: number;
-  onSelectPlatformId: (platformId: number) => void;
-}
-
-export default function PlatformMenu({
-  onSelectPlatformId,
-  selectedPlatformId,
-}: Props) {
+export default function PlatformMenu() {
   const { data: platforms, isLoading, error } = usePlatforms();
-  const selectedPlatform = usePlatform(selectedPlatformId);
+  const platformId = useGameQueryStore((state) => state.gameQuery.platformId);
+  const setPlatformId = useGameQueryStore((state) => state.setPlatformId);
+  const platform = usePlatform(platformId);
 
   return (
     <Menu>
       <HStack alignItems={"center"} whiteSpace={"nowrap"}>
         <MenuButton {...menuButtonStyle}>
-          {selectedPlatform ? selectedPlatform.name : "Platform"}
+          {platformId ? platform?.name : "Platform"}
           <Icon {...menuButtonIconStyle} />
         </MenuButton>
       </HStack>
@@ -53,7 +48,7 @@ export default function PlatformMenu({
           platforms?.results.map((platform) => (
             <MenuItem
               key={platform.id}
-              onClick={() => onSelectPlatformId(platform.id)}
+              onClick={() => setPlatformId(platform.id)}
             >
               {platform.name}
             </MenuItem>

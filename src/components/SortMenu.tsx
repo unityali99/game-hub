@@ -10,13 +10,12 @@ import {
   menuButtonIconStyle,
   menuButtonStyle,
 } from "../utils/MenuButtonStyles";
+import useGameQueryStore from "../utils/gameQueryStore";
 
-interface Props {
-  sortOrder?: string;
-  setSortOrder: (sortValue: string) => void;
-}
+export default function SortMenu() {
+  const sortOrder = useGameQueryStore((state) => state.gameQuery.sortOrder);
+  const setSortOrder = useGameQueryStore((state) => state.setSortOrder);
 
-export default function SortMenu({ sortOrder, setSortOrder }: Props) {
   const sortData = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date Added" },
