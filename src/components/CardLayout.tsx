@@ -13,6 +13,7 @@ export default function CardLayout({ children }: Props) {
       boxShadow={"0 0 7px rgba(0,0,0,0.6)"}
       border={10}
       overflow={"hidden"}
+      cursor={"pointer"}
     >
       {children}
     </Card>
