@@ -5,10 +5,12 @@ import {
   useNavigate,
   useRouteError,
 } from "react-router-dom";
+import { AxiosError } from "axios";
 
 function ErrorPage() {
   const error = useRouteError();
   const isRouteError = isRouteErrorResponse(error);
+  const errorCode = (error as AxiosError)?.response?.status || "";
   const navigate = useNavigate();
 
   return (
@@ -25,7 +27,9 @@ function ErrorPage() {
       >
         <Heading fontSize={200}>{"🤔"}</Heading>
         <Text color={"red.400"} fontSize={50} mt={5}>
-          {isRouteError ? "404: Not Found" : "Unexpected Error"}
+          {isRouteError
+            ? "404: Not Found"
+            : `Unexpected Error${errorCode && `: ${errorCode}`}`}
         </Text>
         <Button
           onClick={() => navigate(-1)}

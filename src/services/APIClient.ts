@@ -12,4 +12,9 @@ export class APIClient<T> {
     httpService
       .get<FetchResult<T>>(this.endpoint, config)
       .then((res) => res.data);
+
+  fetch = (id: number | string, config?: AxiosRequestConfig) =>
+    httpService
+      .get<T>(`${this.endpoint}/${id}`, config)
+      .then((res) => res.data);
 }
