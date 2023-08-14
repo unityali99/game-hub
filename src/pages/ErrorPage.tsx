@@ -18,15 +18,15 @@ function ErrorPage() {
       <NavBar />
       <Alert
         status="warning"
-        w={"50%"}
+        w={{ base: "90%", sm: "80%", md: "60%", lg: "50%" }}
         mx={"auto"}
         my={10}
         justifyContent={"center"}
         flexDir={"column"}
         borderRadius={20}
       >
-        <Heading fontSize={200}>{"🤔"}</Heading>
-        <Text color={"red.400"} fontSize={50} mt={5}>
+        <Heading fontSize={{ base: 100, sm: 150, md: 200 }}>{"🤔"}</Heading>
+        <Text color={"red.400"} fontSize={{ base: 25, sm: 35, md: 50 }} mt={5}>
           {isRouteError
             ? "404: Not Found"
             : `Unexpected Error${errorCode && `: ${errorCode}`}`}
@@ -34,8 +34,8 @@ function ErrorPage() {
         <Button
           onClick={() => navigate(-1)}
           colorScheme="messenger"
-          fontSize={20}
-          p={"7"}
+          fontSize={{ base: 15, md: 20 }}
+          p={{ base: "4", sm: "7" }}
           my={3}
         >
           Go back
