@@ -1,7 +1,18 @@
 import { useParams } from "react-router-dom";
-import { Box, Button, Heading, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  ListItem,
+  SimpleGrid,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import useGame from "../hooks/single/useGame";
 import { useState } from "react";
+import List from "../components/List";
+import ScoreBadge from "../components/ScoreBadge";
+import Attributes from "../components/Attributes";
 
 function GameDetails() {
   const { slug } = useParams();
@@ -40,6 +51,9 @@ function GameDetails() {
       >
         {expanded ? "Show Less" : "Show More ..."}
       </Button>
+      <SimpleGrid columns={2} fontSize={25} my={10}>
+        <Attributes game={game} />
+      </SimpleGrid>
     </Box>
   );
 }
