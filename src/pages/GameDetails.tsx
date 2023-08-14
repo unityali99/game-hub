@@ -1,23 +1,24 @@
-import { useParams } from "react-router-dom";
 import {
   Box,
   Button,
   Heading,
-  ListItem,
   SimpleGrid,
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import useGame from "../hooks/single/useGame";
 import { useState } from "react";
-import List from "../components/List";
-import ScoreBadge from "../components/ScoreBadge";
+import { useParams } from "react-router-dom";
 import Attributes from "../components/Attributes";
+import useGame from "../hooks/single/useGame";
+import useTrailers from "../hooks/list/useTrailers";
 
 function GameDetails() {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
   const [expanded, setExpanded] = useState(false);
+  const { data: trailers } = useTrailers(slug!);
+
+  console.log(trailers);
 
   if (isLoading)
     return (
