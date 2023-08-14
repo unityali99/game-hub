@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
-import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Spinner, Text } from "@chakra-ui/react";
 import useGame from "../hooks/single/useGame";
+import { useState } from "react";
 
 function GameDetails() {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
+  const [expanded, setExpanded] = useState(false);
 
   if (isLoading)
     return (
@@ -25,8 +27,19 @@ function GameDetails() {
 
   return (
     <Box p={5}>
-      <Heading>{game?.name}</Heading>
-      <Text>{game?.description_raw}</Text>
+      <Heading my={10}>{game?.name}</Heading>
+      <Text display={"inline-block"} noOfLines={expanded ? 0 : 3}>
+        {game?.description_raw}
+      </Text>
+      <Button
+        colorScheme="yellow"
+        onClick={() => setExpanded((current) => !current)}
+        display={"inline-block"}
+        px={4}
+        my={3}
+      >
+        {expanded ? "Show Less" : "Show More ..."}
+      </Button>
     </Box>
   );
 }
