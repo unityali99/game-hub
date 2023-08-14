@@ -1,10 +1,10 @@
-import { Game } from "../hooks/single/useGame";
 import { CardBody, CardFooter, HStack, Heading, Image } from "@chakra-ui/react";
 import PlatformList from "./PlatformList";
 import ScoreBadge from "./ScoreBadge";
 import cropImageUrl from "../utils/cropImageUrl";
 import CardLayout from "./CardLayout";
 import { useNavigate } from "react-router-dom";
+import { Game } from "../models/Game";
 
 interface Props {
   game: Game;

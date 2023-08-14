@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { HStack, Icon } from "@chakra-ui/react";
-import { Platform } from "../hooks/list/usePlatforms";
 import {
   FaAndroid,
   FaApple,
@@ -13,6 +12,7 @@ import { IconType } from "react-icons/lib/esm/iconBase";
 import { SiNintendo } from "react-icons/si";
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
+import { Platform } from "../models/Platform";
 interface Props {
   platforms: Platform[];
 }
