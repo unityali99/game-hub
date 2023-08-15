@@ -8,7 +8,7 @@ interface Props {
 
 function List({ title, children }: Props) {
   return (
-    <UnorderedList listStyleType={"none"}>
+    <UnorderedList py={6} listStyleType={"none"}>
       <ListItem color={"whiteAlpha.400"} fontWeight={"bold"}>
         {title}
       </ListItem>
