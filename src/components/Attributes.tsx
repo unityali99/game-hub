@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Game } from "../models/Game";
+import Game from "../models/Game";
 import List from "./List";
 import { ListItem } from "@chakra-ui/react";
 import ScoreBadge from "./ScoreBadge";

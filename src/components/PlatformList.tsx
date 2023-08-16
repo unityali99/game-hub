@@ -12,7 +12,7 @@ import { IconType } from "react-icons/lib/esm/iconBase";
 import { SiNintendo } from "react-icons/si";
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
-import { Platform } from "../models/Platform";
+import Platform from "../models/Platform";
 interface Props {
   platforms: Platform[];
 }

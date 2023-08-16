@@ -5,7 +5,7 @@ import ExpandableText from "../components/ExpandableText";
 import useTrailers from "../hooks/list/useTrailers";
 import useGame from "../hooks/single/useGame";
 import Trailer from "../components/Trailer";
-import useScreenShots from "../hooks/list/useScreenshots";
+import useScreenShots from "../hooks/list/useScreenShots";
 
 function GameDetails() {
   const { slug } = useParams();
@@ -34,10 +34,12 @@ function GameDetails() {
 
   return (
     <Box p={{ base: 3, lg: 5 }}>
-      <SimpleGrid justifyItems={"center"} columns={{ base: 1, md: 2, lg: 3 }}>
-        {screenShots?.results.map(({ id, image }) => (
-          <Image rounded={"lg"} p={1} key={id} src={image} />
-        ))}
+      <SimpleGrid justifyItems={"center"} columns={{ base: 1, md: 2, xl: 3 }}>
+        {screenShots &&
+          screenShots.count > 0 &&
+          screenShots?.results.map(({ id, image }) => (
+            <Image rounded={"lg"} p={1} key={id} src={image} />
+          ))}
       </SimpleGrid>
       <Heading
         mx={{ base: 1, lg: 5 }}

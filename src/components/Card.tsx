@@ -4,7 +4,7 @@ import ScoreBadge from "./ScoreBadge";
 import cropImageUrl from "../utils/cropImageUrl";
 import CardLayout from "./CardLayout";
 import { useNavigate } from "react-router-dom";
-import { Game } from "../models/Game";
+import Game from "../models/Game";
 
 interface Props {
   game: Game;

@@ -1,4 +1,4 @@
-import { Trailer } from "../models/Trailer";
+import Trailer from "../models/Trailer";
 import { Box } from "@chakra-ui/react";
 
 interface Prop {

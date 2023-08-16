@@ -1,3 +1,3 @@
-export interface Publisher {
+export default interface Publisher {
   name: string;
 }
