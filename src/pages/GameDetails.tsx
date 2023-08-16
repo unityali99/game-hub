@@ -4,13 +4,12 @@ import Attributes from "../components/Attributes";
 import ExpandableText from "../components/ExpandableText";
 import useTrailers from "../hooks/list/useTrailers";
 import useGame from "../hooks/single/useGame";
+import Trailer from "../components/Trailer";
 
 function GameDetails() {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
   const { data: trailers } = useTrailers(slug!);
-
-  console.log(trailers);
 
   if (isLoading)
     return (
@@ -32,10 +31,13 @@ function GameDetails() {
   return (
     <Box p={5}>
       <Heading my={10}>{game?.name}</Heading>
-      <ExpandableText text={game.description_raw} limit={500} />
+      <ExpandableText text={game?.description_raw} limit={500} />
       <SimpleGrid columns={2} fontSize={25} my={10}>
         <Attributes game={game} />
       </SimpleGrid>
+      {trailers && trailers.count > 0 && (
+        <Trailer trailer={trailers.results[0]} />
+      )}
     </Box>
   );
 }

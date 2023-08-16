@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { APIClient } from "../../services/APIClient";
-
-const apiClient = new APIClient("/games");
+import { Trailer } from "../../models/Trailer";
+import { FetchResult } from "../../services/httpService";
 
 const useTrailers = (gameId: number | string) => {
-  return useQuery({
+  const apiClient = new APIClient<Trailer>(`/games/${gameId}/movies`);
+
+  return useQuery<FetchResult<Trailer>, Error>({
     queryKey: ["trailers", gameId],
-    queryFn: () => apiClient.fetch(`${gameId}/movies`),
+    queryFn: apiClient.fetchAll,
     staleTime: 1000_000,
   });
 };
