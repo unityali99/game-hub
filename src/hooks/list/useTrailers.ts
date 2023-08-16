@@ -10,6 +10,7 @@ const useTrailers = (gameId: number | string) => {
     queryKey: ["trailers", gameId],
     queryFn: apiClient.fetchAll,
     staleTime: 1000_000,
+    retry: 4,
   });
 };
 

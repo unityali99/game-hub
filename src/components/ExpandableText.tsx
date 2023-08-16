@@ -14,7 +14,7 @@ function ExpandableText({ text, limit }: Props) {
 
   return (
     <Fragment>
-      <Text display={"inline-block"} textAlign={"justify"}>
+      <Text display={"inline-block"}>
         {expanded ? text : slicedText}
         {isLongText && !expanded && "..."}
       </Text>

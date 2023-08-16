@@ -1,15 +1,19 @@
-import { Box, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Heading, Image, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import Attributes from "../components/Attributes";
 import ExpandableText from "../components/ExpandableText";
 import useTrailers from "../hooks/list/useTrailers";
 import useGame from "../hooks/single/useGame";
 import Trailer from "../components/Trailer";
+import useScreenShots from "../hooks/list/useScreenshots";
 
 function GameDetails() {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
   const { data: trailers } = useTrailers(slug!);
+  const { data: screenShots } = useScreenShots(slug!);
+
+  console.log(screenShots);
 
   if (isLoading)
     return (
@@ -29,10 +33,28 @@ function GameDetails() {
   if (!game || error) throw error;
 
   return (
-    <Box p={5}>
-      <Heading my={10}>{game?.name}</Heading>
-      <ExpandableText text={game?.description_raw} limit={500} />
-      <SimpleGrid columns={2} fontSize={25} my={10}>
+    <Box p={{ base: 3, lg: 5 }}>
+      <SimpleGrid justifyItems={"center"} columns={{ base: 1, md: 2, lg: 3 }}>
+        {screenShots?.results.map(({ id, image }) => (
+          <Image rounded={"lg"} p={1} key={id} src={image} />
+        ))}
+      </SimpleGrid>
+      <Heading
+        mx={{ base: 1, lg: 5 }}
+        fontSize={{ base: 25, md: 35, lg: 50 }}
+        my={10}
+      >
+        {game?.name}
+      </Heading>
+      <Box mx={{ base: 2, lg: 7 }}>
+        <ExpandableText text={game?.description_raw} limit={500} />
+      </Box>
+      <SimpleGrid
+        columns={{ base: 2, lg: 4 }}
+        justifyItems={"center"}
+        fontSize={{ base: 15, md: 20, lg: 25 }}
+        my={{ base: 10, lg: 20 }}
+      >
         <Attributes game={game} />
       </SimpleGrid>
       {trailers && trailers.count > 0 && (
