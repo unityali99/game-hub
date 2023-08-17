@@ -1,4 +1,12 @@
-import { Box, Heading, Image, SimpleGrid, Spinner } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  SimpleGrid,
+  Spinner,
+} from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import Attributes from "../components/Attributes";
 import ExpandableText from "../components/ExpandableText";
@@ -33,36 +41,40 @@ function GameDetails() {
   if (!game || error) throw error;
 
   return (
-    <Box p={{ base: 3, lg: 5 }}>
-      <SimpleGrid justifyItems={"center"} columns={{ base: 1, md: 2, xl: 3 }}>
-        {screenShots &&
-          screenShots.count > 0 &&
-          screenShots?.results.map(({ id, image }) => (
-            <Image rounded={"lg"} p={1} key={id} src={image} />
-          ))}
-      </SimpleGrid>
-      <Heading
-        mx={{ base: 1, lg: 5 }}
-        fontSize={{ base: 25, md: 35, lg: 50 }}
-        my={10}
-      >
-        {game?.name}
-      </Heading>
-      <Box mx={{ base: 2, lg: 7 }}>
-        <ExpandableText text={game?.description_raw} limit={500} />
-      </Box>
-      <SimpleGrid
-        columns={{ base: 2, lg: 4 }}
-        justifyItems={"center"}
-        fontSize={{ base: 15, md: 20, lg: 25 }}
-        my={{ base: 10, lg: 20 }}
-      >
-        <Attributes game={game} />
-      </SimpleGrid>
-      {trailers && trailers.count > 0 && (
-        <Trailer trailer={trailers.results[0]} />
-      )}
-    </Box>
+    <SimpleGrid columns={{ base: 1, md: 2 }} p={{ base: 3, lg: 5 }}>
+      <GridItem px={2}>
+        <Heading
+          mx={{ base: 1, lg: 5 }}
+          fontSize={{ base: 25, md: 35, lg: 50 }}
+          my={10}
+        >
+          {game?.name}
+        </Heading>
+        <Box mx={{ base: 2, lg: 7 }}>
+          <ExpandableText text={game?.description_raw} limit={500} />
+        </Box>
+        <SimpleGrid
+          columns={{ base: 2, lg: 4 }}
+          justifyItems={"center"}
+          fontSize={{ base: 15, lg: 20 }}
+          my={{ base: 10, lg: 20 }}
+        >
+          <Attributes game={game} />
+        </SimpleGrid>
+      </GridItem>
+      <GridItem px={2}>
+        {trailers && trailers.count > 0 && (
+          <Trailer trailer={trailers.results[0]} />
+        )}
+        <SimpleGrid justifyItems={"center"} columns={{ base: 1, md: 2, xl: 3 }}>
+          {screenShots &&
+            screenShots.count > 0 &&
+            screenShots?.results.map(({ id, image }) => (
+              <Image rounded={"lg"} p={1} key={id} src={image} />
+            ))}
+        </SimpleGrid>
+      </GridItem>
+    </SimpleGrid>
   );
 }
 
