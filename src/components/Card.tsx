@@ -17,7 +17,7 @@ export default function Card({ game }: Props) {
     <CardLayout onClick={() => navigate("/" + game.slug)}>
       <Image w={"100%"} src={cropImageUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize={30}>{game.name}</Heading>
+        <Heading fontSize={{ base: 20, sm: 25 }}>{game.name}</Heading>
       </CardBody>
       <CardFooter mt={-4}>
         <HStack w={"100%"} justifyContent="space-between">
