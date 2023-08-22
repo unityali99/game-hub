@@ -1,6 +1,5 @@
 import {
   Box,
-  Grid,
   GridItem,
   Heading,
   Image,
@@ -20,8 +19,6 @@ function GameDetails() {
   const { data: game, isLoading, error } = useGame(slug!);
   const { data: trailers } = useTrailers(slug!);
   const { data: screenShots } = useScreenShots(slug!);
-
-  console.log(screenShots);
 
   if (isLoading)
     return (

@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
+import { Box, Flex, HStack, Image } from "@chakra-ui/react";
 import NavLogo from "../assets/logo.webp";
 import ThemeSwitch from "../components/ThemeSwitch";
 import SearchInput from "../components/SearchInput";
